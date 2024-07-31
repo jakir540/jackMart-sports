@@ -1,4 +1,5 @@
 import { useCreateProductMutation } from "@/redux/api/api";
+import { TProduct } from "@/type/product";
 import { Button, Form, Input, InputNumber, Rate } from "antd";
 
 export default function AddProducts() {
@@ -7,7 +8,7 @@ export default function AddProducts() {
     return <p>loading ..........</p>;
   }
 
-  const handleFormSubmit = (values) => {
+  const handleFormSubmit = (values: TProduct) => {
     const productData = {
       name: values.name,
       category: values.category.toLowerCase(),

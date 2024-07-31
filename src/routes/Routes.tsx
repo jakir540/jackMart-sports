@@ -1,6 +1,7 @@
 import MainLayout from "@/components/layout/MainLayout";
 import About from "@/pages/aboutUs/About";
 import Home from "@/pages/home/Home";
+import AddProducts from "@/pages/manageProducts/AddProducts";
 import ManageProducts from "@/pages/manageProducts/ManageProducts";
 import ProductDetails from "@/pages/singleProduct/ProductDetails";
 import { createBrowserRouter } from "react-router-dom";
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "manage-products",
         element: <ManageProducts />,
+      },
+      {
+        path: "addProduct",
+        element: <AddProducts />,
       },
     ],
   },

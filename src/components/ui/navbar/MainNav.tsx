@@ -29,6 +29,11 @@ export default function MainNav() {
           Manage Products
         </Button>
       </NavLink>
+      <NavLink to="/addProduct">
+        <Button variant="link" className="text-white hover:text-[#1E90FF]">
+          Add Product
+        </Button>
+      </NavLink>
       <NavLink to="/cart">
         <Button variant="link" className="text-white hover:text-[#1E90FF]">
           Cart
