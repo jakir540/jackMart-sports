@@ -35,12 +35,12 @@ export default function MobileNav() {
                 Product
               </Button>
             </NavLink>
-            <NavLink to="/contact">
+            <NavLink to="/aboutUs">
               <Button
                 variant="link"
-                className="block text-white hover:text-[#1E90FF]"
+                className="text-white hover:text-[#1E90FF]"
               >
-                Contact
+                About Us
               </Button>
             </NavLink>
             <NavLink to="/manage-products">

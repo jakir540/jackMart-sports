@@ -19,9 +19,9 @@ export default function MainNav() {
           Product
         </Button>
       </NavLink>
-      <NavLink to="/contact">
+      <NavLink to="/aboutUs">
         <Button variant="link" className="text-white hover:text-[#1E90FF]">
-          Contact
+          About Us
         </Button>
       </NavLink>
       <NavLink to="/manage-products">
