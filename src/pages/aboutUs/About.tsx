@@ -18,13 +18,11 @@ import {
 import aboutUsImage from "@/assets/aboutUsShop.jpg";
 
 const { Title, Paragraph } = Typography;
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 export default function About() {
   return (
     <Layout className="min-h-screen bg-gray-100">
-      {/* <Header className="text-center py-4">
-      </Header> */}
       <Title className="text-white text-center py-4 underline">About Us</Title>
 
       <Content className="p-8">

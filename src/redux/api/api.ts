@@ -17,7 +17,18 @@ export const baseApi = createApi({
         url: `/product/${id}`,
       }),
     }),
+    createProduct: builder.mutation({
+      query: (product) => ({
+        method: "POST",
+        url: "/product/create-product",
+        body: product,
+      }),
+    }),
   }),
 });
 
-export const { useGetProductsQuery, useGetSingleProductsQuery } = baseApi;
+export const {
+  useGetProductsQuery,
+  useGetSingleProductsQuery,
+  useCreateProductMutation,
+} = baseApi;

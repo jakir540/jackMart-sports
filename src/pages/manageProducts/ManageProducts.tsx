@@ -1,3 +1,9 @@
+import AddProducts from "./AddProducts";
+
 export default function ManageProducts() {
-  return <div>ManageProducts</div>;
+  return (
+    <div>
+      <AddProducts></AddProducts>
+    </div>
+  );
 }
