@@ -38,14 +38,22 @@ export default function About() {
             </div>
             <div className=" p-10 text-">
               <Title level={2}>About Our Company</Title>
-              <Paragraph>
-                We are a premier sports retailer specializing in a wide range of
-                sports products. From the latest in sports apparel to
-                state-of-the-art equipment, we offer everything you need to
-                excel in your favorite sports. Based in Dhaka, Khilkhet,
-                Bangladesh, our mission is to provide top-notch sports products
-                that enhance performance and encourage an active lifestyle.
-              </Paragraph>
+              <div className="max-w-2xl mx-auto p-8 bg-white rounded-3xl shadow-md">
+                <p className="text-lg font-semibold text-gray-800 mb-4">
+                  We are a premier sports retailer specializing in a wide range
+                  of sports products.
+                </p>
+                <p className="text-md leading-6 text-gray-700 mb-4">
+                  From the latest in sports apparel to state-of-the-art
+                  equipment, we offer everything you need to excel in your
+                  favorite sports.
+                </p>
+                <p className="text-md leading-6 text-gray-700 mb-4">
+                  Based in Dhaka, Khilkhet, Bangladesh, our mission is to
+                  provide top-notch sports products that enhance performance and
+                  encourage an active lifestyle.
+                </p>
+              </div>
             </div>
           </section>
 
@@ -60,7 +68,7 @@ export default function About() {
                   bordered={false}
                   className="bg-white shadow-md"
                 >
-                  <Paragraph>
+                  <Paragraph className="text-md leading-6 text-gray-700 mb-4">
                     Our mission is to promote sports and fitness through the
                     supply of high-quality sports products. We aim to inspire
                     individuals to lead healthier and more active lives by
@@ -75,7 +83,7 @@ export default function About() {
                   bordered={false}
                   className="bg-white shadow-md"
                 >
-                  <Paragraph>
+                  <Paragraph className="text-md leading-6 text-gray-700 mb-4">
                     We envision becoming the leading sports retailer in
                     Bangladesh by continually evolving and adapting to meet the
                     needs of our customers. Our goal is to be recognized for our

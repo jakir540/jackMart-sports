@@ -27,8 +27,8 @@ export default function ProductDetails() {
   }
   const { data } = prouduct;
 
-  const handleAddToCart = () => {
-    console.log("cart");
+  const handleAddToCart = (id: string) => {
+    console.log(id);
   };
   return (
     <Row justify="center" className="my-10">
@@ -69,7 +69,7 @@ export default function ProductDetails() {
                 type="primary"
                 icon={<ShoppingCartOutlined />}
                 className="mt-4"
-                onClick={handleAddToCart}
+                onClick={() => handleAddToCart(data._id)}
               >
                 Add to Cart
               </Button>

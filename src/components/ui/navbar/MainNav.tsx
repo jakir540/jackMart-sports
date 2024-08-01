@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Button } from "../button";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 
 export default function MainNav() {
   return (
@@ -35,8 +36,8 @@ export default function MainNav() {
         </Button>
       </NavLink>
       <NavLink to="/cart">
-        <Button variant="link" className="text-white hover:text-[#1E90FF]">
-          Cart
+        <Button variant="link" className="text-white  hover:text-[#1E90FF]">
+          {<ShoppingCartOutlined />}
         </Button>
       </NavLink>
     </nav>
