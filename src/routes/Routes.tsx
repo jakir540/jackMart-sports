@@ -4,7 +4,7 @@ import Cart from "@/pages/cart/Cart";
 import Home from "@/pages/home/Home";
 import AddProducts from "@/pages/manageProducts/AddProducts";
 import ManageProducts from "@/pages/manageProducts/ManageProducts";
-import ProductDetails from "@/pages/singleProduct/ProductDetails";
+import ProductDetails from "@/pages/singleProduct/SingleProductDetails";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([

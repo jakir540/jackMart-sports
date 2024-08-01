@@ -5,7 +5,8 @@ export type TCartProduct = {
   name: string;
   price: number;
   quantity: number;
-  stockquantity: number;
+  description: string;
+  stockQuantity: number;
   image: string;
 };
 
@@ -22,19 +23,49 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addProductIntoCart: (state, action) => {
-      const ExistinProduct = state.products.find(
+      const existingProduct = state.products.find(
         (pItem) => pItem.id === action.payload.id
       );
-      if (ExistinProduct) {
-        ExistinProduct.quantity =
-          ExistinProduct.quantity + action.payload.quantity;
+      if (existingProduct) {
+        existingProduct.quantity =
+          existingProduct.quantity + action.payload.quantity;
       } else {
         state.products.push(action.payload);
+      }
+    },
+    removeProductFromCart: (state, action) => {
+      state.products = state.products.filter(
+        (item) => item.id !== action.payload.id
+      );
+    },
+    removeAllProductFromCart: (state) => {
+      state.products = [];
+    },
+    increaseStockQuantity: (state, action) => {
+      const existingProduct = state.products.find(
+        (item) => item.id === action.payload.id
+      );
+      if (existingProduct) {
+        existingProduct.quantity += action.payload.quantity;
+      }
+    },
+    decreaseStockQuantity: (state, action) => {
+      const existingProduct = state.products.find(
+        (item) => item.id === action.payload.id
+      );
+      if (existingProduct) {
+        existingProduct.quantity -= action.payload.quantity;
       }
     },
   },
 });
 
-export const { addProductIntoCart } = cartSlice.actions;
+export const {
+  addProductIntoCart,
+  removeProductFromCart,
+  removeAllProductFromCart,
+  increaseStockQuantity,
+  decreaseStockQuantity,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -4,17 +4,21 @@ import { Card, Button, Row, Col, Typography, Rate, Divider } from "antd";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { ShoppingCartOutlined } from "@ant-design/icons";
+
+import { useAppDispatch } from "@/redux/hooks/hooks";
+import { addProductIntoCart } from "@/redux/features/cartSlice/cartSlice";
 const { Title, Text, Paragraph } = Typography;
 
 type TId = {
   id: string;
 };
 
-export default function ProductDetails() {
+export default function SingleProductDetails() {
   const { id } = useParams<TId>();
   console.log(typeof id);
 
   const { data: prouduct, isError, isLoading } = useGetSingleProductsQuery(id);
+  const dispatch = useAppDispatch();
 
   if (isError) {
     return <p>Error .loading product </p>;
@@ -28,7 +32,18 @@ export default function ProductDetails() {
   const { data } = prouduct;
 
   const handleAddToCart = (id: string) => {
-    console.log(id);
+    console.log("handlecart", data);
+    dispatch(
+      addProductIntoCart({
+        id: id,
+        name: data.name,
+        price: data?.price,
+        quantity: 1,
+        description: data?.description,
+        stockQuantity: data?.stockQuantity,
+        image: data?.image,
+      })
+    );
   };
   return (
     <Row justify="center" className="my-10">

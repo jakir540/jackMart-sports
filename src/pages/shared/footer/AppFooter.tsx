@@ -1,4 +1,3 @@
-import React from "react";
 import { Layout, Row, Col, Typography, Space, Divider } from "antd";
 import {
   FacebookOutlined,
@@ -34,24 +33,16 @@ export default function AppFooter() {
             </Text>
             <Space>
               <Link href="https://www.facebook.com" target="_blank">
-                <FacebookOutlined
-                  style={{ fontSize: "24px", color: "#1E90FF" }}
-                />
+                <FacebookOutlined className="text-[#1E90FF] text-2xl" />
               </Link>
               <Link href="https://www.twitter.com" target="_blank">
-                <TwitterOutlined
-                  style={{ fontSize: "24px", color: "#1E90FF" }}
-                />
+                <TwitterOutlined className="text-[#1E90FF] text-2xl" />
               </Link>
               <Link href="https://www.instagram.com" target="_blank">
-                <InstagramOutlined
-                  style={{ fontSize: "24px", color: "#FF4500" }}
-                />
+                <InstagramOutlined className="text-red-500 text-2xl" />
               </Link>
               <Link href="https://www.linkedin.com" target="_blank">
-                <LinkedinOutlined
-                  style={{ fontSize: "24px", color: "#1E90FF" }}
-                />
+                <LinkedinOutlined className="text-[#1E90FF] text-2xl" />
               </Link>
             </Space>
           </Space>
