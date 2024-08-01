@@ -17,12 +17,12 @@ export default function AllProducts() {
     <div className="my-10">
       <h1 className="text-4xl text-[#1E90FF] text-center font-semibold">
         All Products
-        <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center">
-          {data?.data.map((product: TProduct) => (
-            <AllProductsCard key={product._id} data={product} />
-          ))}
-        </div>
       </h1>
+      <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center">
+        {data?.data.map((product: TProduct) => (
+          <AllProductsCard key={product._id} data={product} />
+        ))}
+      </div>
     </div>
   );
 }
