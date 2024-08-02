@@ -17,6 +17,7 @@ import {
   decreaseStockQuantity,
   removeProductFromCart,
 } from "@/redux/features/cartSlice/cartSlice";
+import { NavLink } from "react-router-dom";
 
 const { Title, Text } = Typography;
 
@@ -123,9 +124,15 @@ const Cart = () => {
               </Title>
             </Col>
             <Col>
-              <Button type="primary" size="large" disabled={cart.length === 0}>
-                Proceed to Checkout
-              </Button>
+              <NavLink to="/checkout">
+                <Button
+                  type="primary"
+                  size="large"
+                  disabled={cart.length === 0}
+                >
+                  Proceed to Checkout
+                </Button>
+              </NavLink>
             </Col>
           </Row>
         </Card>
