@@ -44,6 +44,14 @@ export const baseApi = createApi({
       }),
       invalidatesTags: ["Product"],
     }),
+    updateStockQuantityInProduct: builder.mutation({
+      query: ({ productIds, stockQuantity }) => ({
+        method: "POST",
+        url: "/product/updateStockQuantity",
+        body: { productIds, stockQuantity },
+      }),
+      invalidatesTags: ["Product"],
+    }),
   }),
 });
 
@@ -53,4 +61,5 @@ export const {
   useCreateProductMutation,
   useDeleteProductMutation,
   useUpdateProductMutation,
+  useUpdateStockQuantityInProductMutation,
 } = baseApi;

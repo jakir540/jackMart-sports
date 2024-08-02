@@ -1,0 +1,11 @@
+.newsletter {
+  background-image: url("../../../assets/Gravity-x.webp");
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+/* @media (max-width: 768px) {
+    .location {
+      background-image: url("../../../assets/Gravity-Fitness-Home-banner-Web-2000px-srgb_2_1600x.webp");
+        width: 400px;
+    }
+  } */

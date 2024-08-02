@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Form,
   Input,
@@ -20,30 +19,93 @@ import {
   GoogleOutlined,
   ShopOutlined,
 } from "@ant-design/icons";
-import { useAppSelector } from "@/redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
+import { useUpdateStockQuantityInProductMutation } from "@/redux/api/api";
+import {
+  increaseStockQuantity,
+  removeAllProductFromCart,
+} from "@/redux/features/cartSlice/cartSlice";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const { Title, Text } = Typography;
 const { Option } = Select;
 const { Panel } = Collapse;
 
-const calculateTotal = (cart) => {
-  return cart.reduce(
-    (total, product) => total + product.price * product.quantity,
-    0
-  );
-};
-
 const CheckoutPage = () => {
   const cart = useAppSelector((state) => state.cart.products || []);
+  const [updateQuantityInProduct] = useUpdateStockQuantityInProductMutation();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const onFinish = (values) => {
     console.log("Success:", values);
   };
+
+  // Create total function
+  const getTotal = () => {
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
+
+  // Increase the quantity number
+  // const handleQuantityIncrease = (id: string) => {
+  //   const existingProduct = cart.find((item) => item.id === id);
+
+  //   if (
+  //     existingProduct &&
+  //     existingProduct.quantity < existingProduct.stockQuantity
+  //   ) {
+  //     dispatch(increaseStockQuantity({ id, quantity: 1 }));
+  //   }
+  // };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
 
-  const totalAmount = calculateTotal(cart);
+  // const totalAmount = calculateTotal(cart);
+
+  const handleSubmit = async () => {
+    console.log({ cart });
+    const productIds = cart.map((item) => item.id);
+    console.log({ productIds });
+    const stockQuantity = cart.map((item) => item.quantity);
+    console.log({ stockQuantity });
+
+    try {
+      await updateQuantityInProduct({ productIds, stockQuantity });
+      console.log("Order successfully placed");
+      dispatch(removeAllProductFromCart());
+
+      Swal.fire({
+        icon: "success",
+        title: "Thanks For Ordering",
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      navigate("/");
+    } catch (error) {
+      console.error("Error placing order:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Failed to place order",
+        text: error.message,
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      });
+    }
+  };
 
   return (
     <div style={{ padding: "50px", background: "#f0f2f5" }}>
@@ -279,7 +341,12 @@ const CheckoutPage = () => {
               </Form.Item>
 
               <Form.Item>
-                <Button type="primary" htmlType="submit" block>
+                <Button
+                  onClick={() => handleSubmit()}
+                  type="primary"
+                  htmlType="submit"
+                  block
+                >
                   Pay now
                 </Button>
               </Form.Item>
@@ -316,7 +383,8 @@ const CheckoutPage = () => {
                 <Text strong>Subtotal:</Text>
               </Col>
               <Col>
-                <Text>${totalAmount}</Text>
+                <Text>$</Text>
+                {/* <Text>${totalAmount}</Text> */}
               </Col>
             </Row>
             <Row justify="space-between" style={{ marginTop: 10 }}>
@@ -332,9 +400,7 @@ const CheckoutPage = () => {
               <Col>
                 <Title level={4}>Total:</Title>
               </Col>
-              <Col>
-                <Title level={4}>${totalAmount}</Title>
-              </Col>
+              <Col>{/* <Title level={4}>${totalAmount}</Title> */}</Col>
             </Row>
           </Card>
         </Col>
