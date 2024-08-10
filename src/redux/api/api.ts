@@ -16,12 +16,14 @@ export const baseApi = createApi({
     }),
 
     getProducts: builder.query({
-      query: () => ({
+      query: (category) => ({
         method: "GET",
-        url: "/product/products",
+        url: "product/products",
+        params: category ? { category } : {},
       }),
       providesTags: ["Product"],
     }),
+
     getSingleProducts: builder.query({
       query: (id) => ({
         method: "GET",

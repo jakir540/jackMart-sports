@@ -14,7 +14,7 @@ export default function MainNav() {
             Home
           </Button>
         </NavLink>
-        <NavLink to="/products/category">
+        <NavLink to="/product/products">
           <Button type="link" className="text-white hover:text-[#1E90FF]">
             All Products
           </Button>

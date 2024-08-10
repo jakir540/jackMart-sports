@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const categories = ["Basketball", "Football", "Tennis", "Baseball"];
+const categories = ["badminton", "football", "tennis", "cricket"];
 
 function Categories() {
   return (
@@ -12,8 +12,8 @@ function Categories() {
         {categories.map((category) => (
           <NavLink
             key={category}
-            to={`/products/category/${category}`}
-            className="category-card p-6 bg-white border rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out flex items-center justify-center text-xl font-medium text-gray-700 hover:text-[#1E90FF] hover:bg-gray-50"
+            to={`/product/products?category=${category}`}
+            className="category-card capitalize p-6 bg-white border rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out flex items-center justify-center text-xl font-medium text-gray-700 hover:text-[#1E90FF] hover:bg-gray-50"
           >
             {category}
           </NavLink>

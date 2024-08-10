@@ -25,44 +25,48 @@ export default function About() {
     <Layout className="min-h-screen bg-gray-100">
       <Title className="text-white text-center py-4 underline">About Us</Title>
 
-      <Content className="p-8">
+      <Content className="p-4 md:p-8">
         <div className="container mx-auto">
-          <section className="mb-12 flex justify-between justify-items-center gap-8">
-            <div>
+          <section className="mb-12 flex flex-col md:flex-row justify-between items-center gap-8">
+            <Col xs={24} md={12}>
               <Image
                 className="rounded-r-full"
-                width={700}
+                width="100%"
                 src={aboutUsImage}
                 alt="Description of image"
               />
-            </div>
-            <div className=" p-10 text-">
-              <Title level={2}>About Our Company</Title>
-              <div className="max-w-2xl mx-auto p-8 bg-white rounded-3xl shadow-md">
-                <p className="text-lg font-semibold text-gray-800 mb-4">
+            </Col>
+            <Col xs={24} md={12} className="p-4 md:p-10">
+              <Title level={2} style={{ color: "#1E90FF" }}>
+                About Our Company
+              </Title>
+              <div className="p-4 md:p-8 bg-white rounded-3xl shadow-md">
+                <Paragraph className="text-lg font-semibold text-gray-800 mb-4">
                   We are a premier sports retailer specializing in a wide range
                   of sports products.
-                </p>
-                <p className="text-md leading-6 text-gray-700 mb-4">
+                </Paragraph>
+                <Paragraph className="text-md leading-6 text-gray-700 mb-4">
                   From the latest in sports apparel to state-of-the-art
                   equipment, we offer everything you need to excel in your
                   favorite sports.
-                </p>
-                <p className="text-md leading-6 text-gray-700 mb-4">
+                </Paragraph>
+                <Paragraph className="text-md leading-6 text-gray-700 mb-4">
                   Based in Dhaka, Khilkhet, Bangladesh, our mission is to
                   provide top-notch sports products that enhance performance and
                   encourage an active lifestyle.
-                </p>
+                </Paragraph>
               </div>
-            </div>
+            </Col>
           </section>
 
           <Divider />
 
           <section className="mb-12">
-            <Title level={2}>Mission & Vision</Title>
-            <Row gutter={16}>
-              <Col span={12}>
+            <Title level={2} style={{ color: "#1E90FF" }}>
+              Mission & Vision
+            </Title>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
                 <Card
                   title="Our Mission"
                   bordered={false}
@@ -77,7 +81,7 @@ export default function About() {
                   </Paragraph>
                 </Card>
               </Col>
-              <Col span={12}>
+              <Col xs={24} md={12}>
                 <Card
                   title="Our Vision"
                   bordered={false}
@@ -98,25 +102,31 @@ export default function About() {
           <Divider />
 
           <section className="mb-12">
-            <Title level={2}>Contact Information</Title>
-            <Row gutter={16}>
-              <Col span={12}>
-                <Card bordered={false} className="bg-white shadow-md">
+            <Title level={2} style={{ color: "#1E90FF" }}>
+              Contact Information
+            </Title>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
+                <Card
+                  bordered={false}
+                  className="bg-white shadow-md flex items-center"
+                >
                   <MailOutlined className="text-2xl text-[#1E90FF]" />
                   <Paragraph className="ml-4">
                     Email:{" "}
-                    <a href="mailto:info@sportsstore.com">
-                      info@sportsstore.com
+                    <a href="mailto:jakirhossainmd540@gmail.com">
+                      jakirhossainmd540@gmail.com
                     </a>
                   </Paragraph>
                 </Card>
               </Col>
-              <Col span={12}>
-                <Card bordered={false} className="bg-white shadow-md">
+              <Col xs={24} md={12}>
+                <Card
+                  bordered={false}
+                  className="bg-white shadow-md flex items-center"
+                >
                   <PhoneOutlined className="text-2xl text-[#1E90FF]" />
-                  <Paragraph className="ml-4">
-                    Phone: +880 123 456 789
-                  </Paragraph>
+                  <Paragraph className="ml-4">Phone: +880 1707372220</Paragraph>
                 </Card>
               </Col>
             </Row>
@@ -125,33 +135,35 @@ export default function About() {
           <Divider />
 
           <section className="mb-12">
-            <Title level={2}>Our Team</Title>
-            <Row gutter={16}>
-              <Col span={8}>
+            <Title level={2} style={{ color: "#1E90FF" }}>
+              Our Team
+            </Title>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={8}>
                 <Card
                   title="Anisul Islam"
                   bordered={false}
-                  className="bg-white shadow-md"
+                  className="bg-white shadow-md text-center"
                 >
                   <TeamOutlined className="text-2xl text-[#1E90FF]" />
                   <Paragraph className="mt-2">CEO and Founder</Paragraph>
                 </Card>
               </Col>
-              <Col span={8}>
+              <Col xs={24} md={8}>
                 <Card
                   title="Md Jakir Hossain"
                   bordered={false}
-                  className="bg-white shadow-md"
+                  className="bg-white shadow-md text-center"
                 >
                   <TeamOutlined className="text-2xl text-[#1E90FF]" />
                   <Paragraph className="mt-2">Head of Marketing</Paragraph>
                 </Card>
               </Col>
-              <Col span={8}>
+              <Col xs={24} md={8}>
                 <Card
                   title="Jevanoor"
                   bordered={false}
-                  className="bg-white shadow-md"
+                  className="bg-white shadow-md text-center"
                 >
                   <TeamOutlined className="text-2xl text-[#1E90FF]" />
                   <Paragraph className="mt-2">Sales Manager</Paragraph>
@@ -163,8 +175,10 @@ export default function About() {
           <Divider />
 
           <section className="mb-12">
-            <Title level={2}>Our Store Location</Title>
-            <Card bordered={false} className="bg-white shadow-md">
+            <Title level={2} style={{ color: "#1E90FF" }}>
+              Our Store Location
+            </Title>
+            <Card bordered={false} className="bg-white shadow-md text-center">
               <EnvironmentOutlined className="text-2xl text-[#1E90FF]" />
               <Paragraph className="mt-2">
                 Address: 123 Sports Street, Khilkhet, Dhaka, Bangladesh
