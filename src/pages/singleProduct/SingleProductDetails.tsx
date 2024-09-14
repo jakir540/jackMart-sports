@@ -5,7 +5,7 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 
-import { useAppDispatch } from "@/redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import { addProductIntoCart } from "@/redux/features/cartSlice/cartSlice";
 const { Title, Text, Paragraph } = Typography;
 
@@ -14,8 +14,10 @@ type TId = {
 };
 
 export default function SingleProductDetails() {
+  const cart = useAppSelector((state) => state.cart.products || []);
+
+  console.log(cart);
   const { id } = useParams<TId>();
-  console.log(typeof id);
 
   const { data: prouduct, isError, isLoading } = useGetSingleProductsQuery(id);
   const dispatch = useAppDispatch();
@@ -31,8 +33,16 @@ export default function SingleProductDetails() {
   }
   const { data } = prouduct;
 
+  //get the product into cart
+
+  const cartProduct = cart.find((cartItem) => cartItem.id === data._id);
+
+  const cartQuantity = cartProduct ? cartProduct.quantity : 0;
+
+  const isOutOfStock = cartQuantity >= data?.stockQuantity;
+
   const handleAddToCart = (id: string) => {
-    console.log("handlecart", data);
+    if (isOutOfStock) return;
     dispatch(
       addProductIntoCart({
         id: id,
@@ -94,8 +104,9 @@ export default function SingleProductDetails() {
                 className="mt-4"
                 size="large"
                 onClick={() => handleAddToCart(data._id)}
+                disabled={isOutOfStock}
               >
-                Add to Cart
+                {isOutOfStock ? "Out of Stock" : "Add to Cart"}
               </Button>
             </Col>
           </Row>

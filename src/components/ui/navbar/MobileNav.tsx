@@ -19,7 +19,7 @@ export default function MobileNav() {
       <SheetContent side="left">
         <div className="flex flex-col items-start">
           <nav className="md:hidden space-y-2">
-            <NavLink to="/all-products">
+            <NavLink to="/product/products">
               <Button
                 variant="link"
                 className="block text-white hover:text-[#1E90FF]"
@@ -27,14 +27,7 @@ export default function MobileNav() {
                 All Products
               </Button>
             </NavLink>
-            <NavLink to="/product">
-              <Button
-                variant="link"
-                className="block text-white hover:text-[#1E90FF]"
-              >
-                Product
-              </Button>
-            </NavLink>
+
             <NavLink to="/aboutUs">
               <Button
                 variant="link"
@@ -49,6 +42,14 @@ export default function MobileNav() {
                 className="block text-white hover:text-[#1E90FF]"
               >
                 Manage Products
+              </Button>
+            </NavLink>
+            <NavLink to="/addProduct">
+              <Button
+                variant="link"
+                className="block text-white hover:text-[#1E90FF]"
+              >
+                Add Product
               </Button>
             </NavLink>
             <NavLink to="/cart">

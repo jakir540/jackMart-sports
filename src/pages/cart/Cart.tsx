@@ -33,7 +33,6 @@ const Cart = () => {
   // Increase the quantity number
   const handleQuantityIncrease = (id: string) => {
     const existingProduct = cart.find((item) => item.id === id);
-
     if (
       existingProduct &&
       existingProduct.quantity < existingProduct.stockQuantity
@@ -45,14 +44,13 @@ const Cart = () => {
   // Decrease the quantity number
   const handleQuantityDecrease = (id: string) => {
     const existingProduct = cart.find((item) => item.id === id);
-
     if (existingProduct && existingProduct.quantity > 1) {
       dispatch(decreaseStockQuantity({ id, quantity: 1 }));
     }
   };
-
+  // remove item from the cart
   const handleRemove = (id: string) => {
-    dispatch(removeProductFromCart(id));
+    dispatch(removeProductFromCart({ id }));
   };
 
   return (

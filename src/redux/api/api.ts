@@ -3,7 +3,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const baseApi = createApi({
   reducerPath: "baseApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000/api" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://jack-mart-sports-backend.vercel.app/api",
+  }),
   tagTypes: ["Product"],
   endpoints: (builder) => ({
     createProduct: builder.mutation({
@@ -37,6 +39,7 @@ export const baseApi = createApi({
         method: "DELETE",
         url: `/product/${id}`,
       }),
+      invalidatesTags: ["Product"],
     }),
     updateProduct: builder.mutation({
       query: (productData) => ({

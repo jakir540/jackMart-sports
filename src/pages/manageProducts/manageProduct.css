@@ -1,0 +1,15 @@
+.ant-table-wrapper {
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .ant-table {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .ant-table-thead th,
+  .ant-table-tbody td {
+    flex: 1;
+  }
+}

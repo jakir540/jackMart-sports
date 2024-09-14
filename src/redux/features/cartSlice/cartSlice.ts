@@ -27,8 +27,7 @@ const cartSlice = createSlice({
         (pItem) => pItem.id === action.payload.id
       );
       if (existingProduct) {
-        existingProduct.quantity =
-          existingProduct.quantity + action.payload.quantity;
+        existingProduct.quantity += action.payload.quantity;
       } else {
         state.products.push(action.payload);
       }
@@ -38,6 +37,7 @@ const cartSlice = createSlice({
         (item) => item.id !== action.payload.id
       );
     },
+
     removeAllProductFromCart: (state) => {
       state.products = [];
     },

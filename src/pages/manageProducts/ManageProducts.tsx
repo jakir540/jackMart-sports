@@ -1,5 +1,6 @@
 import { Modal, Table } from "antd";
 import { Button, Form, Input, InputNumber, Rate } from "antd";
+import "./manageProduct.css";
 import {
   useDeleteProductMutation,
   useGetProductsQuery,
@@ -90,10 +91,6 @@ const ManageProducts = () => {
     setIsModalOpen(false);
   };
 
-  // update single product
-  // const handleUpdate = (record: TProduct) => {
-  //   updateProduct();
-  // };
   //delete single product
   const handleDelete = (record: TProduct) => {
     deleteProduct(record._id);

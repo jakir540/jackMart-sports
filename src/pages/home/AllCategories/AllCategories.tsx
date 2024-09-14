@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const categories = ["badminton", "football", "tennis", "cricket"];
+const categories = ["badminton", "football", "racket", "cricket"];
 
 function Categories() {
   return (

@@ -7,7 +7,7 @@ export default function MainNav() {
   const cart = useAppSelector((state) => state.cart.products || []);
 
   return (
-    <nav className="hidden md:flex items-center space-x-4">
+    <nav className="hidden md:flex items-center space-x-4 ">
       <Space size="large">
         <NavLink to="/">
           <Button type="link" className="text-white hover:text-[#1E90FF]">
@@ -19,11 +19,7 @@ export default function MainNav() {
             All Products
           </Button>
         </NavLink>
-        <NavLink to="/product">
-          <Button type="link" className="text-white hover:text-[#1E90FF]">
-            Product
-          </Button>
-        </NavLink>
+
         <NavLink to="/aboutUs">
           <Button type="link" className="text-white hover:text-[#1E90FF]">
             About Us

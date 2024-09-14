@@ -10,21 +10,13 @@ import {
   Divider,
   Select,
   List,
-  Space,
   Radio,
   Collapse,
 } from "antd";
-import {
-  CreditCardOutlined,
-  GoogleOutlined,
-  ShopOutlined,
-} from "@ant-design/icons";
+import { CreditCardOutlined } from "@ant-design/icons";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import { useUpdateStockQuantityInProductMutation } from "@/redux/api/api";
-import {
-  increaseStockQuantity,
-  removeAllProductFromCart,
-} from "@/redux/features/cartSlice/cartSlice";
+import { removeAllProductFromCart } from "@/redux/features/cartSlice/cartSlice";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -38,7 +30,7 @@ const CheckoutPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const onFinish = (values) => {
+  const handleFinish = (values) => {
     console.log("Success:", values);
   };
 
@@ -47,23 +39,11 @@ const CheckoutPage = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
-  // Increase the quantity number
-  // const handleQuantityIncrease = (id: string) => {
-  //   const existingProduct = cart.find((item) => item.id === id);
-
-  //   if (
-  //     existingProduct &&
-  //     existingProduct.quantity < existingProduct.stockQuantity
-  //   ) {
-  //     dispatch(increaseStockQuantity({ id, quantity: 1 }));
-  //   }
-  // };
-
-  const onFinishFailed = (errorInfo) => {
+  const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
   };
 
-  // const totalAmount = calculateTotal(cart);
+  const totalAmount = (getTotal() * 1.15).toFixed(2);
 
   const handleSubmit = async () => {
     console.log({ cart });
@@ -91,8 +71,8 @@ const CheckoutPage = () => {
         },
       });
 
-      navigate("/");
-    } catch (error) {
+      navigate("/success");
+    } catch (error: any) {
       console.error("Error placing order:", error);
       Swal.fire({
         icon: "error",
@@ -121,7 +101,7 @@ const CheckoutPage = () => {
             <Form
               name="checkout"
               initialValues={{ remember: true }}
-              onFinish={onFinish}
+              onFinish={handleFinish}
               onFinishFailed={onFinishFailed}
               layout="vertical"
             >
@@ -380,11 +360,11 @@ const CheckoutPage = () => {
             <Divider />
             <Row justify="space-between">
               <Col>
-                <Text strong>Subtotal:</Text>
+                <Text strong>Subtotal: </Text>
               </Col>
               <Col>
-                <Text>$</Text>
-                {/* <Text>${totalAmount}</Text> */}
+                <Text></Text>
+                <Text>${totalAmount}</Text>
               </Col>
             </Row>
             <Row justify="space-between" style={{ marginTop: 10 }}>
@@ -400,7 +380,9 @@ const CheckoutPage = () => {
               <Col>
                 <Title level={4}>Total:</Title>
               </Col>
-              <Col>{/* <Title level={4}>${totalAmount}</Title> */}</Col>
+              <Col>
+                <Title level={4}>${totalAmount}</Title>
+              </Col>
             </Row>
           </Card>
         </Col>

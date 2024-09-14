@@ -137,7 +137,7 @@ export default function AppFooter() {
       </Row>
       <Divider style={{ borderColor: "rgba(255, 255, 255, 0.2)" }} />
       <Text style={{ color: "white", fontSize: "14px" }}>
-        © 2024 My Website. All Rights Reserved.
+        © 2024 at Sports Website. All Rights Reserved.
       </Text>
     </Footer>
   );
