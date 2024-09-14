@@ -139,15 +139,13 @@ A fully-featured e-commerce platform for sporting goods, offering a seamless use
    cd jackmart-sports
    npm install
    npm run dev
+   ```
+2. Clone the repository:
+   ```bash
    git clone https://github.com/jakir540/jack_mart_sports_backend.git
    cd jackmart-sports-backend
+   npm install
+   MONGODB_URI=your-mongodb-uri
+   STRIPE_API_KEY=your-stripe-api-key
+   npm run dev
    ```
-
-npm install
-MONGODB_URI=your-mongodb-uri
-STRIPE_API_KEY=your-stripe-api-key
-npm run dev
-
-```
-
-```
