@@ -353,7 +353,7 @@ const CheckoutPage = () => {
                     title={item.name}
                     description={`Quantity: ${item.quantity}`}
                   />
-                  <Text>${item.price * item.quantity}</Text>
+                  <Text> Price: ${item.price * item.quantity}</Text>
                 </List.Item>
               )}
             />
