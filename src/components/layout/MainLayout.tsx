@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 export default function MainLayout() {
   return (
-    <div className="max-w-[1360px] mx-auto">
+    <div className="max-w-[1360px] mx-auto min-h-screen">
       <SideHeader />
       <Outlet />
       <AppFooter></AppFooter>

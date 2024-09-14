@@ -6,10 +6,12 @@ import { NavLink } from "react-router-dom";
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
+  const handleLinkClick = () => {
+    setOpen(false);
+  };
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      {/* This button will trigger open the mobile sheet menu */}
       <SheetTrigger asChild>
         <Button variant="ghost" size="icon" className="md:hidden">
           <MenuIcon />
@@ -18,7 +20,15 @@ export default function MobileNav() {
 
       <SheetContent side="left">
         <div className="flex flex-col items-start">
-          <nav className="md:hidden space-y-2">
+          <nav onClick={handleLinkClick} className="md:hidden space-y-2">
+            <NavLink to="/">
+              <Button
+                variant="link"
+                className="block text-white hover:text-[#1E90FF]"
+              >
+                Home
+              </Button>
+            </NavLink>
             <NavLink to="/product/products">
               <Button
                 variant="link"

@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import AllProductsCard from "../allProducts/AllProductsCard";
 import { TProduct } from "@/type/product";
 import { motion } from "framer-motion";
+import ErrorPage from "@/error-page";
 
 export default function AllProducts() {
   const { search } = useLocation();
@@ -41,10 +42,18 @@ export default function AllProducts() {
   }, [data, searchQuery, sortOption]);
 
   if (isError) {
-    return <p>Error loading products</p>;
+    return (
+      <div>
+        <ErrorPage />
+      </div>
+    );
   }
   if (isLoading) {
-    return <p>Products loading...</p>;
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
+      </div>
+    );
   }
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
