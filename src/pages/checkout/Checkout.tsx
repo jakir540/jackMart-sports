@@ -30,7 +30,7 @@ const CheckoutPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const handleFinish = (values) => {
+  const handleFinish = (values: any) => {
     console.log("Success:", values);
   };
 

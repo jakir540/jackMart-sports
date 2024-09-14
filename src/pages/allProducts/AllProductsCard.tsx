@@ -2,12 +2,12 @@ import { TAllProductProps } from "@/type/product";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Button, Card } from "antd";
 import { NavLink } from "react-router-dom";
-import StarRatingComponent from "react-star-rating-component";
+import StarRatings from "react-star-ratings";
 
 export default function AllProductsCard({ data }: TAllProductProps) {
   return (
     <Card
-      className="border-none p-4 rounded-[10px] shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out "
+      className="border-none p-4 rounded-[10px] shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
       hoverable
       style={{
         width: "100%",
@@ -27,7 +27,7 @@ export default function AllProductsCard({ data }: TAllProductProps) {
     >
       <div className="flex flex-col flex-grow">
         <div className="flex-grow">
-          <h2 className="text-2xl font-bold mb-1 text-[#1E90FF]">
+          <h2 className="text-2xl capitalize font-bold mb-1 text-[#1E90FF]">
             {data.name}
           </h2>
           <p className="text-md font-medium text-gray-600 mb-1">
@@ -41,14 +41,15 @@ export default function AllProductsCard({ data }: TAllProductProps) {
           </p>
 
           <div className="my-1">
-            <StarRatingComponent
+            <StarRatings
+              rating={data.rating}
+              starRatedColor="gold"
+              numberOfStars={5}
               name="rating"
-              starCount={5}
-              value={data.rating}
-              editing={false}
-              starColor="#ffd700"
-              emptyStarColor="#e4e5e9"
+              starDimension="18px"
+              starSpacing="4px"
             />
+            ;
           </div>
 
           <p className="text-xl font-semibold text-[#1E90FF] mb-1">
