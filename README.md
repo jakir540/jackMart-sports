@@ -4,7 +4,7 @@ A fully-featured e-commerce platform for sporting goods, offering a seamless use
 
 ## Live Demo
 
-- **Frontend**: [Live Demo](https://66e53f54b3a8640e1b5196e6--legendary-moonbeam-0eadc1.netlify.app/)
+- **Frontend**: [Live Demo](https://jack-mart-sports.vercel.app/)
 - **Backend API**: [API Backend](https://jack-mart-sports-backend.vercel.app/api)
 
 ## Tech Stack
@@ -71,12 +71,6 @@ A fully-featured e-commerce platform for sporting goods, offering a seamless use
 ### 8. Responsive Design
 
 - Mobile-first design ensures compatibility across all devices, including desktops, tablets, and smartphones.
-
-### 9. Bonus Features
-
-- **RTK Query Polling**: Automatically fetch the latest products every 30 seconds.
-- **Homepage Animations**: Smooth transitions and animations for better user experience.
-- **Optional Stripe Integration**: Secure payments using Stripe.
 
 ## Pages Overview
 
