@@ -49,7 +49,6 @@ export default function AllProductsCard({ data }: TAllProductProps) {
               starDimension="18px"
               starSpacing="4px"
             />
-            ;
           </div>
 
           <p className="text-xl font-semibold text-[#1E90FF] mb-1">

@@ -56,25 +56,26 @@ export default function AppFooter() {
             </Text>
             <Space direction="vertical">
               <Link href="/" style={{ color: "white", fontSize: "16px" }}>
-                <HomeOutlined /> Home
+                <HomeOutlined style={{ color: "#1E90FF" }} /> Home
               </Link>
               <Link
                 href="/aboutUs"
                 style={{ color: "white", fontSize: "16px" }}
               >
-                <InfoCircleOutlined /> About Us
+                <InfoCircleOutlined style={{ color: "#1E90FF" }} /> About Us
               </Link>
               <Link
                 href="/services"
                 style={{ color: "white", fontSize: "16px" }}
               >
-                <CustomerServiceOutlined /> Services
+                <CustomerServiceOutlined style={{ color: "#1E90FF" }} />{" "}
+                Services
               </Link>
               <Link
                 href="/aboutUs"
                 style={{ color: "white", fontSize: "16px" }}
               >
-                <PhoneOutlined /> Contact
+                <PhoneOutlined style={{ color: "#1E90FF" }} /> Contact
               </Link>
             </Space>
           </Space>
@@ -91,13 +92,14 @@ export default function AppFooter() {
                 href="mailto:info@mywebsite.com"
                 style={{ color: "white", fontSize: "16px" }}
               >
-                <MailOutlined /> jakirhossaimd540@gmail.com
+                <MailOutlined style={{ color: "#1E90FF" }} />{" "}
+                jakirhossaimd540@gmail.com
               </Link>
               <Link
                 href="tel:+8801707372220"
                 style={{ color: "white", fontSize: "16px" }}
               >
-                <PhoneOutlined /> +8801707372220
+                <PhoneOutlined style={{ color: "#1E90FF" }} /> +8801707372220
               </Link>
             </Space>
           </Space>
@@ -111,25 +113,26 @@ export default function AppFooter() {
             </Text>
             <Space direction="vertical">
               <Link href="/blog" style={{ color: "white", fontSize: "16px" }}>
-                <FileTextOutlined /> Blog
+                <FileTextOutlined style={{ color: "#1E90FF" }} /> Blog
               </Link>
               <Link
                 href="/aboutUs"
                 style={{ color: "white", fontSize: "16px" }}
               >
-                <FileTextOutlined /> FAQ
+                <FileTextOutlined style={{ color: "#1E90FF" }} /> FAQ
               </Link>
               <Link
                 href="/aboutUs"
                 style={{ color: "white", fontSize: "16px" }}
               >
-                <FileTextOutlined /> Terms of Service
+                <FileTextOutlined style={{ color: "#1E90FF" }} /> Terms of
+                Service
               </Link>
               <Link
                 href="/aboutUs"
                 style={{ color: "white", fontSize: "16px" }}
               >
-                <FileTextOutlined /> Privacy Policy
+                <FileTextOutlined style={{ color: "#1E90FF" }} /> Privacy Policy
               </Link>
             </Space>
           </Space>
