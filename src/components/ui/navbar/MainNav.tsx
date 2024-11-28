@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NavLink } from "react-router-dom";
 import { Button, Badge, Space, Input } from "antd";
 import { ShoppingCartOutlined, SearchOutlined } from "@ant-design/icons";
@@ -8,7 +9,7 @@ export default function MainNav() {
   const cart = useAppSelector((state) => state.cart.products || []);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearch = (value) => {
+  const handleSearch = (value: any) => {
     // Redirect to a search page or handle the search logic here
     console.log("Searching for:", value);
   };

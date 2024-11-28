@@ -1,9 +1,11 @@
 import Banner from "@/components/homeComponets/Banner";
 import AllProducts from "../allProducts/AllProducts";
 import AllCategories from "./AllCategories/AllCategories";
-import Advertisement from "./advertisement/Advertisement";
 import Contact from "./contact/Contact";
 import TrendingSportsWear from "@/components/homeComponets/TrendingSportsWear";
+import ComingSoon from "./ComingSoon/ComingSoon";
+import Articles from "./Articles/Articles";
+import ProductReviews from "./ProductReviews/ProductReviews";
 
 export default function Home() {
   return (
@@ -11,9 +13,16 @@ export default function Home() {
       <Banner></Banner>
       <AllProducts />
       <AllCategories />
-      <Advertisement />
+      {/* <Advertisement /> */}
+      <ComingSoon />
       <TrendingSportsWear></TrendingSportsWear>
+      <Articles />
+      <ProductReviews />
       <Contact />
     </div>
   );
 }
+
+// https://i.ibb.co.com/LhSn7dD/sl1.jpg
+// https://i.ibb.co.com/WHSWdwq/sl2.jpg
+// https://i.ibb.co.com/ZMNMPf8/sl3.jpg

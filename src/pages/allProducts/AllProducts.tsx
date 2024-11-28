@@ -9,16 +9,13 @@ export default function AllProducts() {
   console.log(data?.data);
 
   if (isError) {
-    return (
-      <div>
-        <ErrorPage />
-      </div>
-    );
+    return <ErrorPage />;
   }
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
+        <div className="relative w-16 h-16 border-t-4 border-indigo-500 border-solid rounded-full animate-spin opacity-70"></div>
       </div>
     );
   }
@@ -30,16 +27,16 @@ export default function AllProducts() {
       y: 0,
       transition: { duration: 0.9, ease: "easeOut" },
     },
-    hover: { scale: 1.05, boxShadow: "0px 10px 15px rgba(0, 0, 0, 0.3)" },
+    hover: { scale: 1.05, boxShadow: "0px 15px 30px rgba(0, 0, 0, 0.2)" },
   };
 
   return (
-    <div className="my-10">
-      <h1 className="text-4xl text-[#1E90FF] capitalize text-center font-semibold">
-        latest products
+    <div className="my-10 max-w-screen-lg mx-auto p-4">
+      <h1 className="text-4xl bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-500 text-center font-extrabold tracking-wide mb-6 backdrop-blur-sm bg-opacity-10 rounded-lg p-2">
+        Latest Products
       </h1>
-      <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center p-3 rounded ">
-        {data?.data.slice(0, 4).map((product: TProduct) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 rounded-xl p-4 bg-opacity-80 bg-white/30 shadow-xl backdrop-blur-lg">
+        {data?.data.slice(0, 6).map((product: TProduct) => (
           <motion.div
             key={product._id}
             variants={cardVariants}
