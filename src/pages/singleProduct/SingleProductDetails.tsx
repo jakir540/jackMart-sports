@@ -7,6 +7,7 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import { addProductIntoCart } from "@/redux/features/cartSlice/cartSlice";
+import ProductReviews from "../home/ProductReviews/ProductReviews";
 const { Title, Text, Paragraph } = Typography;
 
 type TId = {
@@ -56,69 +57,179 @@ export default function SingleProductDetails() {
     );
   };
   return (
-    <Row justify="center" className="my-10">
-      <Col span={24} md={16}>
-        <Card className="p-6 shadow-lg">
-          <Row gutter={[32, 32]}>
-            <Col span={24} md={12}>
-              <PhotoProvider>
-                <PhotoView src={data?.image}>
-                  <img
-                    alt={data?.name}
-                    src={data?.image}
+    <>
+      <Row
+        justify="center"
+        className="my-10"
+        style={{
+          background: "linear-gradient(135deg, #f5f7fa, #c3cfe2)",
+          padding: "30px",
+          borderRadius: "20px",
+        }}
+      >
+        <Col span={24} md={20} lg={18}>
+          <Card
+            className="shadow-lg"
+            style={{
+              borderRadius: "15px",
+              padding: "20px",
+              background: "rgba(255, 255, 255, 0.85)",
+              backdropFilter: "blur(10px)",
+              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            <Row gutter={[24, 24]} align="middle">
+              {/* Left Section: Product Image */}
+              <Col span={24} md={12}>
+                <PhotoProvider>
+                  <PhotoView src={data?.image}>
+                    <div
+                      style={{
+                        overflow: "hidden",
+                        borderRadius: "15px",
+                        position: "relative",
+                      }}
+                    >
+                      <img
+                        alt={data?.name}
+                        src={data?.image}
+                        style={{
+                          width: "100%",
+                          cursor: "pointer",
+                          transition:
+                            "transform 0.3s ease, box-shadow 0.3s ease",
+                        }}
+                        onMouseEnter={(e) =>
+                          (e.currentTarget.style.transform = "scale(1.1)")
+                        }
+                        onMouseLeave={(e) =>
+                          (e.currentTarget.style.transform = "scale(1)")
+                        }
+                      />
+                    </div>
+                  </PhotoView>
+                </PhotoProvider>
+              </Col>
+
+              {/* Right Section: Product Details */}
+              <Col span={24} md={12}>
+                <div style={{ padding: "0 20px" }}>
+                  <Title level={2} style={{ marginBottom: "10px" }}>
+                    {data?.name}
+                  </Title>
+                  <Text
                     style={{
-                      width: "100%",
-                      cursor: "pointer",
-                      borderRadius: "10px",
+                      display: "block",
+                      fontSize: "14px",
+                      color: "#888",
+                      marginBottom: "5px",
+                    }}
+                  >
+                    {data?.category}
+                  </Text>
+                  <Rate
+                    disabled
+                    defaultValue={data?.rating}
+                    style={{
+                      fontSize: "18px",
+                      color: "#FFD700",
+                      marginBottom: "15px",
                     }}
                   />
-                </PhotoView>
-              </PhotoProvider>
-            </Col>
 
-            <Col
-              span={24}
-              md={12}
-              className="flex flex-col justify-center items-center"
-            >
-              <Title level={2}>Name: {data?.name}</Title>
-              <Text strong>Category: </Text>
-              <Text>{data.category}</Text>
-              <Divider />
-              <Text strong>Brand: </Text>
-              <Text>{data.brand}</Text>
-              <Divider />
-              <Text strong>Stock Quantity: </Text>
-              <Text>{data.stockQuantity}</Text>
-              <Divider />
-              <Text strong>Rating: </Text>
-              <Rate disabled defaultValue={data?.rating} />
-              <Divider />
-              <Text strong>Price: </Text>
-              <Text className="text-lg font-semibold">
-                ${data?.price?.toFixed(2)}
-              </Text>
-              <Button
-                type="primary"
-                icon={<ShoppingCartOutlined />}
-                className="mt-4"
-                size="large"
-                onClick={() => handleAddToCart(data._id)}
-                disabled={isOutOfStock}
-              >
-                {isOutOfStock ? "Out of Stock" : "Add to Cart"}
-              </Button>
-            </Col>
-          </Row>
+                  <Divider />
 
-          <Row className="mt-8">
-            <Col span={24}>
-              <Title level={3}>Description</Title>
-              <Paragraph>{data?.description}</Paragraph>
-            </Col>
-          </Row>
-        </Card>
-      </Col>
-    </Row>
+                  <Text strong style={{ fontSize: "16px", display: "block" }}>
+                    Brand:
+                  </Text>
+                  <Text style={{ fontSize: "15px", marginBottom: "10px" }}>
+                    {data?.brand}
+                  </Text>
+
+                  <Text strong style={{ fontSize: "16px", display: "block" }}>
+                    Stock Quantity:
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: "15px",
+                      color: data.stockQuantity > 0 ? "#28a745" : "#d9534f",
+                    }}
+                  >
+                    {data?.stockQuantity > 0
+                      ? `${data.stockQuantity} Available`
+                      : "Out of Stock"}
+                  </Text>
+
+                  <Divider />
+
+                  <Text strong style={{ fontSize: "16px", display: "block" }}>
+                    Price:
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: "24px",
+                      fontWeight: "bold",
+                      color: "#222",
+                      marginBottom: "20px",
+                    }}
+                  >
+                    ${data?.price?.toFixed(2)}
+                  </Text>
+
+                  <Button
+                    type="primary"
+                    size="large"
+                    icon={<ShoppingCartOutlined />}
+                    style={{
+                      width: "100%",
+                      height: "50px",
+                      fontSize: "16px",
+                      borderRadius: "10px",
+                      background: isOutOfStock
+                        ? "#bbb"
+                        : "linear-gradient(135deg, #6a11cb, #2575fc)",
+                      border: "none",
+                      color: "#fff",
+                      transition: "all 0.3s ease",
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.background = isOutOfStock
+                        ? "#bbb"
+                        : "linear-gradient(135deg, #2575fc, #6a11cb)")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.background = isOutOfStock
+                        ? "#bbb"
+                        : "linear-gradient(135deg, #6a11cb, #2575fc)")
+                    }
+                    onClick={() => handleAddToCart(data._id)}
+                    disabled={isOutOfStock}
+                  >
+                    {isOutOfStock ? "Out of Stock" : "Add to Cart"}
+                  </Button>
+                </div>
+              </Col>
+            </Row>
+
+            {/* Product Description */}
+            <Row className="mt-8">
+              <Col span={24}>
+                <Divider />
+                <Title
+                  level={3}
+                  style={{ marginTop: "20px", marginBottom: "10px" }}
+                >
+                  Description
+                </Title>
+                <Paragraph style={{ color: "#555", lineHeight: "1.8" }}>
+                  {data?.description}
+                </Paragraph>
+              </Col>
+            </Row>
+          </Card>
+        </Col>
+      </Row>
+      <ProductReviews />
+    </>
   );
 }

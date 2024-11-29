@@ -31,6 +31,7 @@ export default function ProductReviews() {
     e.preventDefault();
     setReviews([...reviews, newReview]);
     setNewReview({ name: "", rating: 1, comment: "" });
+    console.log("clicked submit", reviews);
   };
 
   // Change the return type of calculateAverageRating to a number
@@ -92,7 +93,7 @@ export default function ProductReviews() {
 
         {/* Reviews List */}
         <div className="space-y-8">
-          {reviews.map((review, index) => (
+          {reviews.slice(0, 5).map((review, index) => (
             <div key={index} className="bg-white p-6 rounded-lg shadow-md">
               <div className="flex items-center mb-4">
                 <div className="text-lg font-semibold text-gray-800">
