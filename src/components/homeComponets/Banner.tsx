@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import sliderImage1 from "@/assets/banner1.jpg";
 import sliderImage2 from "@/assets/ball.jpeg";
 import { ShoppingCartOutlined } from "@ant-design/icons";
+import { useGetProductsQuery } from "@/redux/api/api";
+// import { useGetProductsQuery } from "@/redux/api/api";
 
 const { Text } = Typography;
 
@@ -31,26 +33,18 @@ const cardVariants = {
   }),
 };
 
-const offerings = [
-  {
-    id: 1,
-    image: "https://i.ibb.co/zFCG6JW/banner-Bat.jpg",
-    title: "Cricket Bat",
-    originalPrice: "$80",
-    discountedPrice: "$50",
-    discount: "20% OFF",
-  },
-  {
-    id: 2,
-    image: "https://i.ibb.co/XFFdY6W/sports-5.jpg",
-    title: "Football",
-    originalPrice: "$40",
-    discountedPrice: "$30",
-    discount: "25% OFF",
-  },
-];
-
 export default function ECommerceBanner() {
+  const { data, isError, isLoading } = useGetProductsQuery("");
+
+  if (isLoading) {
+    return <p>Loading offerings...</p>;
+  }
+
+  if (isError) {
+    return <p>Error loading offerings!</p>;
+  }
+
+  const offerings = data?.data.slice(0, 2);
   return (
     <div className="p-4 bg-gray-100">
       <Row gutter={[24, 24]} align="middle">
@@ -162,33 +156,57 @@ export default function ECommerceBanner() {
                     display: "flex",
                     gap: "10px",
                     alignItems: "center",
-                    borderRadius: "12px",
-                    background: "linear-gradient(145deg, #f8f8f8, #ffffff)",
-                    boxShadow: "6px 6px 12px #d9d9d9, -6px -6px 12px #ffffff",
+                    borderRadius: "16px",
+                    padding: "5px",
+                    background: "linear-gradient(145deg, #ececec, #ffffff)",
+                    boxShadow: "8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff",
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                    cursor: "pointer",
                   }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.transform = "scale(1.03)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.transform = "scale(1)")
+                  }
                 >
                   <img
                     src={offer.image}
                     alt={offer.title}
                     style={{
-                      width: "70px",
-                      height: "70px",
-                      borderRadius: "10px",
+                      width: "80px",
+                      height: "80px",
+                      borderRadius: "12px",
                       objectFit: "cover",
-                      boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+                      boxShadow: "0 6px 12px rgba(0, 0, 0, 0.1)",
                     }}
                   />
-                  <div>
+                  <div style={{ flex: 1 }}>
                     <Text
                       style={{
-                        fontSize: "16px",
+                        fontSize: "18px",
                         fontWeight: "bold",
                         color: "#333",
+                        marginBottom: "5px",
                       }}
                     >
                       {offer.title}
                     </Text>
-                    <div className="flex items-center gap-2">
+                    <Text
+                      style={{
+                        fontSize: "14px",
+                        color: "#666",
+                        marginBottom: "10px",
+                        lineHeight: "1.5",
+                        display: "block",
+                      }}
+                    >
+                      {offer.description}
+                    </Text>
+                    <div
+                      className="flex items-center gap-2"
+                      style={{ marginBottom: "10px" }}
+                    >
                       <Text
                         style={{
                           fontSize: "14px",
@@ -208,12 +226,18 @@ export default function ECommerceBanner() {
                         {offer.discountedPrice}
                       </Text>
                     </div>
-                    <Tag color="green">{offer.discount}</Tag>
+                    <Tag color="green" style={{ marginBottom: "10px" }}>
+                      {offer.discount}
+                    </Tag>
                     <Button
                       type="primary"
                       size="small"
-                      className="mt-2"
                       icon={<ShoppingCartOutlined />}
+                      style={{
+                        backgroundColor: "#FF5722",
+                        borderColor: "#FF5722",
+                        boxShadow: "0 4px 8px rgba(255, 87, 34, 0.2)",
+                      }}
                     >
                       Add to Cart
                     </Button>
