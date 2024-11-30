@@ -1,137 +1,83 @@
-import { useState, useEffect } from "react";
 import { useGetProductsQuery } from "@/redux/api/api";
-import { useLocation, useNavigate } from "react-router-dom";
-import AllProductsCard from "../allProducts/AllProductsCard";
+// import AllProductsCard from "./AllProductsCard";
 import { TProduct } from "@/type/product";
 import { motion } from "framer-motion";
 import ErrorPage from "@/error-page";
+import AllProductsCard from "../allProducts/AllProductsCard";
 
 export default function AllProducts() {
-  const { search } = useLocation();
-  const navigate = useNavigate();
-  const query = new URLSearchParams(search);
-  const category = query.get("category");
-  const searchQuery = query.get("search") || "";
-  const sortOption = query.get("sort") || "";
-
-  const [filteredProducts, setFilteredProducts] = useState<TProduct[]>([]);
-
-  const { data, isError, isLoading } = useGetProductsQuery(category || "");
-
-  useEffect(() => {
-    if (data?.data) {
-      // Create a copy
-      let products = [...data.data];
-
-      //search filter
-      if (searchQuery) {
-        products = products.filter((product: TProduct) =>
-          product.name.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-      }
-
-      // sorting
-      if (sortOption === "priceAsc") {
-        products.sort((a: TProduct, b: TProduct) => a.price - b.price);
-      } else if (sortOption === "priceDesc") {
-        products.sort((a: TProduct, b: TProduct) => b.price - a.price);
-      }
-
-      setFilteredProducts(products);
-    }
-  }, [data, searchQuery, sortOption]);
+  const { data, isError, isLoading } = useGetProductsQuery(undefined);
 
   if (isError) {
-    return (
-      <div>
-        <ErrorPage />
-      </div>
-    );
+    return <ErrorPage />;
   }
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
+        <div className="relative w-16 h-16 border-t-4 border-indigo-500 border-solid rounded-full animate-spin opacity-70"></div>
       </div>
     );
   }
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    query.set("search", e.target.value);
-    navigate({ search: query.toString() });
-  };
-
-  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    query.set("sort", e.target.value);
-    navigate({ search: query.toString() });
-  };
-
-  const clearFilters = () => {
-    query.delete("search");
-    query.delete("sort");
-    navigate({ search: query.toString() });
-  };
-
   const cardVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1 },
-    hover: { scale: 1.05, boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.3)" },
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.9, ease: "easeOut" },
+    },
+    hover: { scale: 1.05, boxShadow: "0px 15px 30px rgba(0, 0, 0, 0.2)" },
   };
 
   return (
-    <div className="my-10">
-      <h1 className="text-4xl text-[#1E90FF] text-center font-semibold">
-        {category &&
-        filteredProducts.some(
-          (product: TProduct) => product.category === category
-        )
-          ? `Products in ${category}`
-          : "All Products"}
-      </h1>
-
-      {/* Search and filter section */}
-      <div className="filters lg:flex items-center justify-center lg:gap-4 md:gap-3 gap-2">
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchQuery}
-          onChange={handleSearchChange}
-          className="border p-2 rounded my-3"
-        />
-        <select
-          value={sortOption}
-          onChange={handleSortChange}
-          className="border p-2 rounded my-3"
+    <div className="my-10 mx-auto max-w-screen-xl p-4">
+      {/* Header Section */}
+      <header className="mb-8 text-center">
+        <motion.h1
+          className="text-5xl bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-500 font-extrabold tracking-wide mb-4"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
         >
-          <option value="">Sort by</option>
-          <option value="priceAsc">Price: Low to High</option>
-          <option value="priceDesc">Price: High to Low</option>
-        </select>
+          Explore Our Latest Products
+        </motion.h1>
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          Discover handpicked items tailored for your needs. Enjoy premium
+          quality and modern aesthetics.
+        </p>
+      </header>
 
-        <button
-          onClick={clearFilters}
-          className="border p-2 my-3 rounded bg-red-500 text-white"
+      {/* Product Grid Section */}
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 bg-white/60 p-6 rounded-2xl shadow-lg backdrop-blur-md"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+        }}
+      >
+        {data?.data.slice(0, 6).map((product: TProduct) => (
+          <motion.div
+            key={product._id}
+            variants={cardVariants}
+            whileHover="hover"
+            className="relative"
+          >
+            <AllProductsCard data={product} />
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Call-to-Action Section */}
+      <div className="mt-12 text-center">
+        <motion.button
+          className="px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-blue-500 text-white font-semibold text-lg hover:from-blue-500 hover:to-indigo-600 transform hover:scale-105 shadow-lg hover:shadow-indigo-400/50 transition-all duration-300"
+          whileHover={{ y: -3 }}
         >
-          Clear Filters
-        </button>
-      </div>
-
-      <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product: TProduct) => (
-            <motion.div
-              key={product._id}
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-              whileHover="hover"
-            >
-              <AllProductsCard data={product} />
-            </motion.div>
-          ))
-        ) : (
-          <p>No products found</p>
-        )}
+          View All Products
+        </motion.button>
       </div>
     </div>
   );

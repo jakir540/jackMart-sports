@@ -3,7 +3,7 @@ import { Carousel, Card, Row, Col, Typography, Button, Tag } from "antd";
 import { motion } from "framer-motion";
 import sliderImage1 from "@/assets/banner1.jpg";
 import sliderImage2 from "@/assets/ball.jpeg";
-import { ShoppingCartOutlined } from "@ant-design/icons";
+
 import { useGetProductsQuery } from "@/redux/api/api";
 // import { useGetProductsQuery } from "@/redux/api/api";
 
@@ -142,7 +142,7 @@ export default function ECommerceBanner() {
         {/* Offering Section */}
         <Col span={6} md={6}>
           <div className="flex flex-col gap-4">
-            {offerings.map((offer, index) => (
+            {offerings.map((offer: any, index: any) => (
               <motion.div
                 key={offer.id}
                 custom={index}
@@ -209,38 +209,32 @@ export default function ECommerceBanner() {
                     >
                       <Text
                         style={{
-                          fontSize: "14px",
+                          fontSize: "25px",
                           textDecoration: "line-through",
                           color: "#999",
                         }}
                       >
-                        {offer.originalPrice}
+                        $ 80
                       </Text>
                       <Text
                         style={{
-                          fontSize: "16px",
                           fontWeight: "bold",
                           color: "#FF5722",
                         }}
                       >
-                        {offer.discountedPrice}
+                        $ 50
                       </Text>
                     </div>
-                    <Tag color="green" style={{ marginBottom: "10px" }}>
-                      {offer.discount}
-                    </Tag>
-                    <Button
-                      type="primary"
-                      size="small"
-                      icon={<ShoppingCartOutlined />}
+                    <Tag
+                      color="green"
                       style={{
-                        backgroundColor: "#FF5722",
-                        borderColor: "#FF5722",
-                        boxShadow: "0 4px 8px rgba(255, 87, 34, 0.2)",
+                        marginBottom: "5px",
+                        fontSize: "20px",
+                        padding: "2px",
                       }}
                     >
-                      Add to Cart
-                    </Button>
+                      $ 30
+                    </Tag>
                   </div>
                 </Card>
               </motion.div>

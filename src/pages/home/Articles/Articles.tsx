@@ -6,21 +6,21 @@ export default function Articles() {
       title: "Choosing the Best Football Gear",
       description:
         "Discover the top picks for football gear this season. Whether you're a beginner or a pro, we've got you covered.",
-      image: "https://via.placeholder.com/400x250",
+      image: "https://i.ibb.co.com/m8QZTZS/running.jpg",
       link: "/articles/choosing-football-gear",
     },
     {
       title: "Top 5 Training Tips for Runners",
       description:
         "Boost your performance with these simple yet effective training tips for runners of all levels.",
-      image: "https://via.placeholder.com/400x250",
+      image: "https://i.ibb.co.com/7X4Y7HV/sports-Hand.jpg",
       link: "/articles/training-tips-for-runners",
     },
     {
       title: "The Ultimate Guide to Cricket Bat Selection",
       description:
         "Not sure what cricket bat to choose? Our expert guide breaks down everything you need to know.",
-      image: "https://via.placeholder.com/400x250",
+      image: "https://i.ibb.co.com/kcFxjtg/american-Football.jpg",
       link: "/articles/guide-to-cricket-bat-selection",
     },
   ];
@@ -68,3 +68,7 @@ export default function Articles() {
     </div>
   );
 }
+
+// https://i.ibb.co.com/kcFxjtg/american-Football.jpg
+// https://i.ibb.co.com/7X4Y7HV/sports-Hand.jpg
+// https://i.ibb.co.com/m8QZTZS/running.jpg

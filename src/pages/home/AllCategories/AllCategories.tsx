@@ -4,8 +4,8 @@ const categories = ["badminton", "football", "racket", "cricket"];
 
 function Categories() {
   return (
-    <div className="categories py-10 bg-gray-100">
-      <h2 className="text-3xl text-[#1E90FF] text-center font-semibold mb-8">
+    <div className="categories py-5 bg-gray-100">
+      <h2 className="text-5xl text-center bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-500 font-extrabold tracking-wide mb-4">
         Categories
       </h2>
       <div className="max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
