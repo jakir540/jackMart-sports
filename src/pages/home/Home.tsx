@@ -5,6 +5,7 @@ import Contact from "./contact/Contact";
 import TrendingSportsWear from "@/components/homeComponets/TrendingSportsWear";
 import ComingSoon from "./ComingSoon/ComingSoon";
 import Articles from "./Articles/Articles";
+import Testimonial from "./testimonial/Testimonial";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <ComingSoon />
       <TrendingSportsWear></TrendingSportsWear>
       <Articles />
+      <Testimonial />
       <Contact />
     </div>
   );
