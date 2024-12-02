@@ -57,6 +57,14 @@ export const baseApi = createApi({
       }),
       invalidatesTags: ["Product"],
     }),
+    createCustomerReview: builder.mutation({
+      query: (customerReview) => ({
+        method: "POST",
+        url: "/customer/create-customer-review",
+        body: customerReview,
+      }),
+      // invalidatesTags: ["Product"],
+    }),
   }),
 });
 

@@ -2,7 +2,7 @@ import { TAllProductProps } from "@/type/product";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Button, Card, Tooltip } from "antd";
 import { NavLink } from "react-router-dom";
-import StarRatings from "react-star-ratings";
+// import StarRatings from "react-star-ratings";
 import { motion } from "framer-motion";
 import { FaHeart } from "react-icons/fa";
 import { useState } from "react";
@@ -20,7 +20,7 @@ export default function AllProductsCard({ data }: TAllProductProps) {
       className="relative"
     >
       <Card
-        className="relative p-6 bg-gradient-to-br from-gray-50 to-gray-200 rounded-3xl shadow-2xl transform transition-transform duration-500 hover:scale-105 hover:shadow-indigo-300/50"
+        className="relative p-3 bg-gradient-to-br from-gray-50 to-gray-200 rounded-3xl shadow-2xl transform transition-transform duration-500 hover:scale-105 hover:shadow-indigo-300/50"
         hoverable
         style={{
           display: "flex",
@@ -66,7 +66,7 @@ export default function AllProductsCard({ data }: TAllProductProps) {
             {data.brand}
           </p>
 
-          <div className="flex items-center my-2">
+          {/* <div className="flex items-center my-2">
             <StarRatings
               rating={data.rating}
               starRatedColor="#FACC15"
@@ -76,7 +76,7 @@ export default function AllProductsCard({ data }: TAllProductProps) {
               starSpacing="3px"
             />
             <span className="text-sm text-gray-600 ml-2">{`(${data.rating}/5)`}</span>
-          </div>
+          </div> */}
 
           <p className="text-xl font-semibold text-indigo-600 my-2">
             ${data.price.toFixed(2)}
