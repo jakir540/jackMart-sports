@@ -12,7 +12,7 @@ export default function TestimonialSlider() {
     isError,
   } = useGetCustomerReviewQuery(undefined);
 
-  const testimonials = response?.data || []; // Adjust based on actual API structure
+  const testimonials = response?.data || [];
 
   console.log("Fetched testimonials data:", testimonials);
 
@@ -63,7 +63,7 @@ export default function TestimonialSlider() {
             >
               <div className="flex justify-center mb-6">
                 <img
-                  src={testimonial.image || "https://via.placeholder.com/100"}
+                  src={testimonial.avatar}
                   alt={testimonial.name}
                   className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg transform transition-all duration-300 hover:scale-110"
                 />
@@ -72,11 +72,9 @@ export default function TestimonialSlider() {
                 {testimonial.name}
               </h3>
               <p className="text-sm text-gray-600">
-                {testimonial.role || "Customer"}
+                {testimonial.location || "Customer"}
               </p>
-              <p className="mt-4 text-gray-800 text-lg">
-                {testimonial.message}
-              </p>
+              <p className="mt-4 text-gray-800 text-lg">{testimonial.review}</p>
               <div className="mt-4 text-yellow-400">
                 {"★".repeat(testimonial.rating)}
                 {"☆".repeat(5 - testimonial.rating)}
