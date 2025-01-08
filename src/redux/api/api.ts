@@ -65,6 +65,13 @@ export const baseApi = createApi({
       }),
       // invalidatesTags: ["Product"],
     }),
+    getCustomerReview: builder.query({
+      query: () => ({
+        method: "GET",
+        url: "/customer/customer-review",
+      }),
+      // invalidatesTags: ["Product"],
+    }),
   }),
 });
 
@@ -75,4 +82,6 @@ export const {
   useDeleteProductMutation,
   useUpdateProductMutation,
   useUpdateStockQuantityInProductMutation,
+  useCreateCustomerReviewMutation,
+  useGetCustomerReviewQuery,
 } = baseApi;

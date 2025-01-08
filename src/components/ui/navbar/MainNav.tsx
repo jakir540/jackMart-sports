@@ -4,6 +4,7 @@ import { Button, Badge, Space, Input } from "antd";
 import { ShoppingCartOutlined, SearchOutlined } from "@ant-design/icons";
 import { useAppSelector } from "@/redux/hooks/hooks";
 import { useState } from "react";
+// import logo from '../../../assets/logom.JPG'
 
 export default function MainNav() {
   const cart = useAppSelector((state) => state.cart.products || []);
@@ -18,7 +19,13 @@ export default function MainNav() {
     <header className="sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <div className="text-white font-bold text-xl">MyStore</div>
+        <div className="text-white font-bold text-xl px-3">
+          <img
+            className="rounded-full size-11"
+            src="https://i.ibb.co.com/8d965YN/logom.jpg"
+            alt="logo"
+          />
+        </div>
 
         {/* Navigation Links */}
         <nav className="hidden md:flex items-center space-x-4">
