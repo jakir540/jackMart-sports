@@ -90,3 +90,9 @@ export default function MainNav() {
     </header>
   );
 }
+
+// https://i.ibb.co.com/Q9fBRY4/racket-1.jpg
+// https://i.ibb.co.com/V9g2w5V/racket-2.jpg
+// https://i.ibb.co.com/7Y6WmQz/racket-3.jpg
+// https://i.ibb.co.com/2KVh4Cq/racket-4.jpg
+// https://i.ibb.co.com/TW3Wcbf/racket-5.jpg

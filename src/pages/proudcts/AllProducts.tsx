@@ -1,12 +1,13 @@
 import { useGetProductsQuery } from "@/redux/api/api";
-// import AllProductsCard from "./AllProductsCard";
 import { TProduct } from "@/type/product";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import ErrorPage from "@/error-page";
 import AllProductsCard from "../allProducts/AllProductsCard";
 
 export default function AllProducts() {
   const { data, isError, isLoading } = useGetProductsQuery(undefined);
+  const [showAll, setShowAll] = useState(false);
 
   if (isError) {
     return <ErrorPage />;
@@ -29,6 +30,9 @@ export default function AllProducts() {
     },
     hover: { scale: 1.05, boxShadow: "0px 15px 30px rgba(0, 0, 0, 0.2)" },
   };
+
+  // Determine products to display
+  const productsToDisplay = showAll ? data?.data : data?.data.slice(0, 6);
 
   return (
     <div className="my-10 mx-auto max-w-screen-xl p-4">
@@ -58,7 +62,7 @@ export default function AllProducts() {
           visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
         }}
       >
-        {data?.data.slice(0, 6).map((product: TProduct) => (
+        {productsToDisplay?.map((product: TProduct) => (
           <motion.div
             key={product._id}
             variants={cardVariants}
@@ -75,8 +79,9 @@ export default function AllProducts() {
         <motion.button
           className="px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-blue-500 text-white font-semibold text-lg hover:from-blue-500 hover:to-indigo-600 transform hover:scale-105 shadow-lg hover:shadow-indigo-400/50 transition-all duration-300"
           whileHover={{ y: -3 }}
+          onClick={() => setShowAll(!showAll)}
         >
-          View All Products
+          {showAll ? "Show Less" : "View All Products"}
         </motion.button>
       </div>
     </div>

@@ -4,8 +4,11 @@ import { TProduct } from "@/type/product";
 import { motion } from "framer-motion";
 import ErrorPage from "@/error-page";
 
+import { useNavigate } from "react-router-dom";
+
 export default function AllProducts() {
   const { data, isError, isLoading } = useGetProductsQuery(undefined);
+  const navigate = useNavigate();
 
   if (isError) {
     return <ErrorPage />;
@@ -49,7 +52,7 @@ export default function AllProducts() {
 
       {/* Product Grid Section */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 p-5 rounded-lg bg-gradient-to-r from-white via-gray-100 to-white">
-        {data?.data.slice(0, 6).map((product: TProduct) => (
+        {data?.data.slice(0, 8).map((product: TProduct) => (
           <motion.div
             key={product._id}
             variants={cardVariants}
@@ -68,6 +71,7 @@ export default function AllProducts() {
         <motion.button
           className="px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-blue-500 text-white font-semibold text-lg hover:from-blue-500 hover:to-indigo-600 transform hover:scale-105 shadow-lg hover:shadow-indigo-400/50 transition-all duration-300"
           whileHover={{ y: -3 }}
+          onClick={() => navigate("/product/products")}
         >
           View All Products
         </motion.button>
