@@ -16,6 +16,7 @@ import {
 } from "@ant-design/icons";
 
 import aboutUsImage from "@/assets/aboutUsShop.jpg";
+import MissionAndVission from "@/components/otherComponents/MissionAndVission";
 
 const { Title, Paragraph } = Typography;
 const { Content } = Layout;
@@ -61,43 +62,8 @@ export default function About() {
 
           <Divider />
 
-          <section className="mb-12">
-            <Title level={2} style={{ color: "#1E90FF" }}>
-              Mission & Vision
-            </Title>
-            <Row gutter={[16, 16]}>
-              <Col xs={24} md={12}>
-                <Card
-                  title="Our Mission"
-                  bordered={false}
-                  className="bg-white shadow-md"
-                >
-                  <Paragraph className="text-md leading-6 text-gray-700 mb-4">
-                    Our mission is to promote sports and fitness through the
-                    supply of high-quality sports products. We aim to inspire
-                    individuals to lead healthier and more active lives by
-                    providing exceptional products and unparalleled customer
-                    service.
-                  </Paragraph>
-                </Card>
-              </Col>
-              <Col xs={24} md={12}>
-                <Card
-                  title="Our Vision"
-                  bordered={false}
-                  className="bg-white shadow-md"
-                >
-                  <Paragraph className="text-md leading-6 text-gray-700 mb-4">
-                    We envision becoming the leading sports retailer in
-                    Bangladesh by continually evolving and adapting to meet the
-                    needs of our customers. Our goal is to be recognized for our
-                    commitment to excellence, innovation, and customer
-                    satisfaction.
-                  </Paragraph>
-                </Card>
-              </Col>
-            </Row>
-          </section>
+          {/* Mission and MissionAndVission */}
+          <MissionAndVission />
 
           <Divider />
 
