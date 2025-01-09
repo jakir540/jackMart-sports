@@ -1,6 +1,6 @@
 import { useGetSingleProductsQuery } from "@/redux/api/api";
 import { useParams } from "react-router-dom";
-import { Card, Button, Row, Col, Typography, Rate, Divider } from "antd";
+import { Card, Button, Row, Col, Typography, Rate, Divider, Tag } from "antd";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { ShoppingCartOutlined } from "@ant-design/icons";
@@ -60,22 +60,22 @@ export default function SingleProductDetails() {
     <>
       <Row
         justify="center"
-        className="my-10"
+        className="my-12"
         style={{
-          background: "linear-gradient(135deg, #f5f7fa, #c3cfe2)",
-          padding: "30px",
-          borderRadius: "20px",
+          background: "linear-gradient(135deg, #eef2f3, #8e9eab)",
+          padding: "40px",
+          borderRadius: "25px",
         }}
       >
         <Col span={24} md={20} lg={18}>
           <Card
-            className="shadow-lg"
+            className="shadow-xl hover:shadow-2xl transition-all"
             style={{
-              borderRadius: "15px",
-              padding: "20px",
+              borderRadius: "20px",
+              padding: "25px",
               background: "rgba(255, 255, 255, 0.85)",
-              backdropFilter: "blur(10px)",
-              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+              backdropFilter: "blur(15px)",
+              boxShadow: "0 12px 40px rgba(0, 0, 0, 0.15)",
             }}
           >
             <Row gutter={[24, 24]} align="middle">
@@ -86,9 +86,16 @@ export default function SingleProductDetails() {
                     <div
                       style={{
                         overflow: "hidden",
-                        borderRadius: "15px",
+                        borderRadius: "20px",
                         position: "relative",
+                        transition: "transform 0.3s ease",
                       }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.transform = "scale(1.03)")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.transform = "scale(1)")
+                      }
                     >
                       <img
                         alt={data?.name}
@@ -96,15 +103,8 @@ export default function SingleProductDetails() {
                         style={{
                           width: "100%",
                           cursor: "pointer",
-                          transition:
-                            "transform 0.3s ease, box-shadow 0.3s ease",
+                          borderRadius: "20px",
                         }}
-                        onMouseEnter={(e) =>
-                          (e.currentTarget.style.transform = "scale(1.1)")
-                        }
-                        onMouseLeave={(e) =>
-                          (e.currentTarget.style.transform = "scale(1)")
-                        }
                       />
                     </div>
                   </PhotoView>
@@ -113,16 +113,16 @@ export default function SingleProductDetails() {
 
               {/* Right Section: Product Details */}
               <Col span={24} md={12}>
-                <div style={{ padding: "0 20px" }}>
-                  <Title level={2} style={{ marginBottom: "10px" }}>
+                <div>
+                  <Title level={2} className="text-gray-800 mb-2">
                     {data?.name}
                   </Title>
                   <Text
                     style={{
                       display: "block",
                       fontSize: "14px",
-                      color: "#888",
-                      marginBottom: "5px",
+                      color: "#999",
+                      marginBottom: "8px",
                     }}
                   >
                     {data?.category}
@@ -133,7 +133,7 @@ export default function SingleProductDetails() {
                     style={{
                       fontSize: "18px",
                       color: "#FFD700",
-                      marginBottom: "15px",
+                      marginBottom: "20px",
                     }}
                   />
 
@@ -147,18 +147,21 @@ export default function SingleProductDetails() {
                   </Text>
 
                   <Text strong style={{ fontSize: "16px", display: "block" }}>
-                    Stock Quantity:
+                    Stock Status:
                   </Text>
-                  <Text
+                  <Tag
+                    color={data?.stockQuantity > 0 ? "green" : "red"}
                     style={{
                       fontSize: "15px",
-                      color: data.stockQuantity > 0 ? "#28a745" : "#d9534f",
+                      padding: "5px 15px",
+                      borderRadius: "10px",
+                      marginBottom: "15px",
                     }}
                   >
                     {data?.stockQuantity > 0
                       ? `${data.stockQuantity} Available`
                       : "Out of Stock"}
-                  </Text>
+                  </Tag>
 
                   <Divider />
 
@@ -167,7 +170,7 @@ export default function SingleProductDetails() {
                   </Text>
                   <Text
                     style={{
-                      fontSize: "24px",
+                      fontSize: "28px",
                       fontWeight: "bold",
                       color: "#222",
                       marginBottom: "20px",
@@ -184,7 +187,7 @@ export default function SingleProductDetails() {
                       width: "100%",
                       height: "50px",
                       fontSize: "16px",
-                      borderRadius: "10px",
+                      borderRadius: "12px",
                       background: isOutOfStock
                         ? "#bbb"
                         : "linear-gradient(135deg, #6a11cb, #2575fc)",
@@ -212,13 +215,10 @@ export default function SingleProductDetails() {
             </Row>
 
             {/* Product Description */}
-            <Row className="mt-8">
+            <Row className="mt-10">
               <Col span={24}>
                 <Divider />
-                <Title
-                  level={3}
-                  style={{ marginTop: "20px", marginBottom: "10px" }}
-                >
+                <Title level={3} className="text-gray-800 mb-3">
                   Description
                 </Title>
                 <Paragraph style={{ color: "#555", lineHeight: "1.8" }}>
@@ -229,6 +229,7 @@ export default function SingleProductDetails() {
           </Card>
         </Col>
       </Row>
+
       <ProductReviews />
     </>
   );
